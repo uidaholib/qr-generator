@@ -12,6 +12,7 @@ function generate_qr_code() {
     var qrCampaign = document.getElementById("qrCampaign").value;
     var qrSource = document.getElementById("qrSource").value;
     var qrMedium = document.getElementById("qrMedium").value ? document.getElementById("qrMedium").value : "qr_code";
+    var qrMargin = 3;
 
     if (qrCampaign) { 
         qrUrl += `?utm_campaign=${encodeURIComponent(qrCampaign)}&utm_source=${encodeURIComponent(qrSource)}&utm_medium=${encodeURIComponent(qrMedium)}`;
@@ -24,7 +25,10 @@ function generate_qr_code() {
         height: qrWidth,
         type: "svg",
         data: qrUrl,
-        image: qrLogo
+        image: qrLogo,
+        imageOptions: {
+            margin: qrMargin
+        }
     });
     
     // add button to download qr
